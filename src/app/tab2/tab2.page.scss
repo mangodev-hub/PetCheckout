@@ -1,0 +1,173 @@
+.custom-toolbar {
+  --background: #fbf9f4;
+  --border-color: transparent;
+  --min-height: 56px;
+
+  .page-title {
+    font-family: 'Righteous', cursive, sans-serif;
+    font-size: 1.25rem;
+    line-height: 1.4 !important;
+    padding-bottom: 4px;
+    letter-spacing: 1px;
+    color: #171717;
+    text-align: center;
+    overflow: visible;
+  }
+}
+
+.purchase-screen {
+  --background: #fbf9f4;
+  font-family: 'Space Grotesk', -apple-system, sans-serif;
+}
+
+.purchase-container {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 16px 22px 32px 22px;
+}
+
+.header-intro {
+  text-align: center;
+  margin-bottom: 16px;
+
+  .badge-image-wrapper {
+    width: 100%;
+    max-width: 180px;
+    margin: 0 auto 16px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #171717;
+    letter-spacing: -0.3px;
+  }
+
+  p {
+    margin: 4px 0 0 0;
+    font-size: 0.88rem;
+    color: #555555;
+  }
+}
+
+/* Selector Perros / Gatos */
+.category-segment {
+  margin-bottom: 18px;
+  background: #ece8dc;
+  border-radius: 14px;
+  padding: 4px;
+
+  ion-segment-button {
+    --background-checked: #18181b;
+    --color-checked: #ffffff;
+    --color: #555555;
+    --indicator-color: transparent;
+    border-radius: 10px;
+    font-family: 'Space Grotesk', -apple-system, sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    min-height: 40px;
+  }
+}
+
+.form-card {
+  border-radius: 20px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+  margin: 0 0 20px 0;
+
+  ion-card-content {
+    padding: 18px 16px;
+  }
+}
+
+.field-item {
+  margin-bottom: 16px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.input-box {
+  --background: #f4f2ec;
+  --border-radius: 12px;
+  --padding-start: 14px;
+  --padding-end: 14px;
+  --highlight-height: 0;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+
+  ion-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #333333;
+    margin-bottom: 4px;
+    letter-spacing: 0.2px;
+  }
+
+  ion-select,
+  ion-input {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #111111;
+    width: 100%;
+  }
+
+  &.readonly-box {
+    opacity: 0.9;
+    --background: #ebe7dd;
+  }
+}
+
+.error-text {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #dc2626;
+  font-size: 0.76rem;
+  font-weight: 600;
+  margin-top: 5px;
+  padding-left: 4px;
+
+  ion-icon {
+    font-size: 0.9rem;
+  }
+}
+
+.nativa-submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 52px;
+  background: #18181b;
+  color: #ffffff;
+  border: none;
+  border-radius: 9999px;
+  font-family: 'Righteous', cursive, sans-serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.1s ease, background-color 0.2s ease;
+
+  ion-icon {
+    font-size: 1.25rem;
+    margin-right: 8px;
+    color: #ffffff;
+  }
+
+  &:active {
+    transform: scale(0.98);
+    background: #27272a;
+  }
+}

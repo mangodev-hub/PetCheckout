@@ -1,17 +1,32 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="welcome-screen">
+  <div class="welcome-container">
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+    <!-- Header centrado -->
+    <div class="welcome-header">
+      <h1 class="title">Bienvenido</h1>
+      <p class="subtitle">Mango's Pet Shop</p>
+    </div>
+
+    <!-- Ilustración central -->
+    <div class="illustration-box">
+      <img
+        src="https://6aca8c317d990bca6540ff08.imgix.net/sandbox/dogcat.png?w=320&h=320&fit=crop&crop=entropy&auto=format"
+        onerror="this.onerror=null; this.src='assets/icon/dogcat.png';"
+        alt="Pet Shopping"
+        class="welcome-img"
+      />
+    </div>
+
+    <!-- Descripción breve y botón inferior -->
+   <!-- Botón de bienvenida -->
+    <div class="welcome-footer">
+      <p class="tagline">Alimentos & snacks para consentir a tu mascota</p>
+
+      <button type="button" class="nativa-start-btn" (click)="goToPurchase()">
+        Comenzar Compra
+      </button>
+    </div>
+
+  </div>
 </ion-content>

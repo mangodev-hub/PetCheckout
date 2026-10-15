@@ -1,17 +1,108 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+<ion-header class="ion-no-border">
+  <ion-toolbar class="custom-toolbar">
+    <ion-title class="page-title">REGISTRAR COMPRA</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="purchase-screen">
+  <div class="purchase-container">
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+    <div class="header-intro">
+      <div class="badge-image-wrapper">
+       <img src="https://6aca8c317d990bca6540ff08.imgix.net/sandbox/compra.png?w=320&h=320&fit=crop&crop=entropy&auto=format"
+              onerror="this.onerror=null; this.src='assets/icon/compra.png';"
+              alt="Compra de productos"
+              class="badge-img"
+              />
+           
+
+      </div>
+      
+      <p>Selecciona la categoría y el producto disponible</p>
+    </div>
+
+    <!-- Segmento de Categorías: Perros o Gatos -->
+    <ion-segment 
+      [value]="currentCategory" 
+      (ionChange)="onCategoryChange($event)" 
+      class="category-segment">
+      <ion-segment-button value="perros">
+        <ion-label> Perros</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="gatos">
+        <ion-label> Gatos</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+    <form [formGroup]="purchaseForm" (ngSubmit)="onSubmit()">
+      <ion-card class="form-card">
+        <ion-card-content>
+
+          <!-- Desplegable de Producto -->
+          <div class="field-item">
+            <ion-item lines="none" class="input-box">
+              <ion-label position="stacked">Producto disponible *</ion-label>
+              <ion-select 
+                formControlName="selectedProductId" 
+                placeholder="Selecciona un producto"
+                interface="action-sheet"
+                cancelText="Cancelar"
+                (ionChange)="onProductSelected($event.detail.value)">
+                <ion-select-option *ngFor="let item of filteredProducts" [value]="item.id">
+                  {{ item.name }} (${{ item.price | number:'1.2-2' }})
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+            <div class="error-text" *ngIf="purchaseForm.get('selectedProductId')?.touched && purchaseForm.get('selectedProductId')?.invalid">
+              <ion-icon name="alert-circle-outline"></ion-icon>
+              <span>Debes seleccionar un producto del inventario.</span>
+            </div>
+          </div>
+
+          <!-- Precio Unitario (Automático según producto) -->
+          <div class="field-item">
+            <ion-item lines="none" class="input-box readonly-box">
+              <ion-label position="stacked">Precio Unitario ($)</ion-label>
+              <ion-input 
+                formControlName="unitPrice" 
+                type="number" 
+                readonly="true"
+                placeholder="Se asigna automáticamente">
+              </ion-input>
+            </ion-item>
+            <div class="error-text" *ngIf="purchaseForm.get('unitPrice')?.touched && purchaseForm.get('unitPrice')?.invalid">
+              <ion-icon name="alert-circle-outline"></ion-icon>
+              <span>Ingresa el precio.</span>
+            </div>
+          </div>
+
+          <!-- Cantidad -->
+          <div class="field-item">
+            <ion-item lines="none" class="input-box">
+              <ion-label position="stacked">Cantidad *</ion-label>
+              <ion-input 
+                formControlName="quantity" 
+                type="number" 
+                min="1" 
+                step="1" 
+                placeholder="1">
+              </ion-input>
+            </ion-item>
+            <div class="error-text" *ngIf="purchaseForm.get('quantity')?.touched && purchaseForm.get('quantity')?.invalid">
+              <ion-icon name="alert-circle-outline"></ion-icon>
+              <span>Ingresa la cantidad.</span>
+            </div>
+          </div>
+
+        </ion-card-content>
+      </ion-card>
+
+      <!-- Botón nativo de continuar sin esquinas blancas -->
+      <button type="submit" class="nativa-submit-btn">
+        <ion-icon name="bag-check-outline"></ion-icon>
+        <span>Continuar al Pago</span>
+      </button>
+    </form>
+
+  </div>
 </ion-content>

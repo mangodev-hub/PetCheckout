@@ -1,17 +1,136 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
+<ion-header class="ion-no-border">
+  <ion-toolbar class="custom-toolbar">
+    <ion-title class="page-title">PAGO y COBRO</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="payment-screen">
+  <div class="payment-container">
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+    
+    <div *ngIf="!purchaseData" class="empty-state">
+      <div class="empty-image-wrapper">
+        <img src="https://6aca8c317d990bca6540ff08.imgix.net/sandbox/splash.png?w=320&h=320&fit=crop&crop=entropy&auto=format" 
+             onerror="this.onerror=null; this.src='assets/icon/splash.png';"
+             alt="Sin compras registradas"
+             class="empty-img"
+             />
+      </div>
+      <h3>No hay productos registrados</h3>
+      <p>Primero ingresa el alimento y la cantidad en la pestaña Compra.</p>
+      <button type="button" class="nativa-btn btn-confirm" (click)="goToNewPurchase()">
+        Registrar Compra
+      </button>
+    </div>
+
+   
+    <div *ngIf="purchaseData">
+
+      <ion-card class="ticket-card">
+        <ion-card-content>
+          <div class="ticket-header">
+            <span class="ticket-tag">TICKET DE VENTA</span>
+            <h3>{{ purchaseData.productName }}</h3>
+            <p>{{ purchaseData.quantity }} un. &times; ${{ purchaseData.unitPrice | number:'1.2-2' }}</p>
+          </div>
+
+          <div class="separator-line"></div>
+
+          <div class="row-value subtotal-row">
+            <span>Subtotal recibido:</span>
+            <strong>${{ purchaseData.subtotal | number:'1.2-2' }}</strong>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      
+      <form [formGroup]="paymentForm">
+        <ion-card class="input-card">
+          <ion-card-content>
+
+            <!-- Descuento (%) -->
+            <div class="field-item">
+              <ion-item lines="none" class="input-box">
+                <ion-label position="stacked">Descuento (%) [0 - 100]</ion-label>
+                <ion-input 
+                  formControlName="discountPercent" 
+                  type="number" 
+                  min="0" 
+                  max="100" 
+                  step="1" 
+                  placeholder="0">
+                </ion-input>
+              </ion-item>
+              <div class="error-text" *ngIf="paymentForm.get('discountPercent')?.touched && paymentForm.get('discountPercent')?.invalid">
+                <ion-icon name="alert-circle-outline"></ion-icon>
+                <span>El descuento debe estar entre 0% y 100%.</span>
+              </div>
+            </div>
+
+            
+            <div class="field-item">
+              <ion-item lines="none" class="input-box">
+                <ion-label position="stacked">Dinero recibido del cliente ($) *</ion-label>
+                <ion-input 
+                  formControlName="amountPaid" 
+                  type="number" 
+                  min="0" 
+                  step="0.01" 
+                  placeholder="Ej. 50.00">
+                </ion-input>
+              </ion-item>
+              <div class="error-text" *ngIf="paymentForm.get('amountPaid')?.touched && paymentForm.get('amountPaid')?.invalid">
+                <ion-icon name="alert-circle-outline"></ion-icon>
+                <span>El dinero recibido debe ser mayor o igual a 0.</span>
+              </div>
+            </div>
+
+          </ion-card-content>
+        </ion-card>
+      </form>
+
+      
+      <ion-card class="balance-card" [class.success-card]="isPaidFully" [class.pending-card]="!isPaidFully">
+        <ion-card-content>
+          
+          <div class="row-value" *ngIf="discountAmount > 0">
+            <span>Descuento aplicado:</span>
+            <span class="discount-text">- ${{ discountAmount | number:'1.2-2' }}</span>
+          </div>
+
+          <div class="row-value total-row">
+            <span>Total final a pagar:</span>
+            <span class="total-amount">${{ finalTotal | number:'1.2-2' }}</span>
+          </div>
+
+          <div class="separator-line"></div>
+
+          
+          <div class="result-badge" *ngIf="paymentForm.get('amountPaid')?.value !== null">
+            <div class="result-header">
+              <ion-icon [name]="isPaidFully ? 'checkmark-circle-outline' : 'alert-circle-outline'"></ion-icon>
+              <span>{{ isPaidFully ? 'CAMBIO A ENTREGAR' : 'SALDO PENDIENTE' }}</span>
+            </div>
+            <h2 class="result-amount">${{ changeOrPending | number:'1.2-2' }}</h2>
+          </div>
+
+        </ion-card-content>
+      </ion-card>
+
+      
+      <div class="action-buttons">
+        <button type="button" class="nativa-btn btn-confirm" (click)="confirmPayment()">
+          <ion-icon name="checkmark-done-outline"></ion-icon>
+          <span>Confirmar Cobro</span>
+        </button>
+
+        <button type="button" class="nativa-btn btn-secondary" (click)="goToNewPurchase()">
+          <ion-icon name="refresh-outline"></ion-icon>
+          <span>Nueva Venta</span>
+        </button>
+      </div>
+
+    </div>
+
+  </div>
 </ion-content>
