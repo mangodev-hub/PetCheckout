@@ -316,7 +316,7 @@ pnpm exec cap sync android
 
 ## Capturas de pantalla
 
-Guarda las imágenes de la aplicación en `docs/screenshots/` y reemplaza los nombres de archivo de esta sección cuando tengas las capturas definitivas.
+
 ### ICONO APLICACIÓN
 
 
