@@ -317,49 +317,52 @@ pnpm exec cap sync android
 ## Capturas de pantalla
 
 Guarda las imágenes de la aplicación en `docs/screenshots/` y reemplaza los nombres de archivo de esta sección cuando tengas las capturas definitivas.
+### ICONO APLICACIÓN
+
+
+<img width="560" height="1200" alt="image" src="https://github.com/user-attachments/assets/69309890-1dab-4e92-9854-dfe485cf7d81" />
+
+
+### Splash Screen
+
+<img width="560" height="1200" alt="Screenshot_20261014_202020" src="https://github.com/user-attachments/assets/4c1f362d-a9ca-4873-840a-b7d913fc7816" />
+
 
 ### Pantalla de bienvenida
 
-<!-- Reemplazar por la captura real -->
-![Pantalla de bienvenida](docs/screenshots/01-bienvenida.png)
+
+<img width="560" height="1200" alt="image" src="https://github.com/user-attachments/assets/3f3bd2df-b5b6-4a5d-8a3a-cc66899621da" />
+
 
 ### Registro de compra
 
-<!-- Reemplazar por la captura real -->
-![Registro de compra](docs/screenshots/02-compra.png)
+
+<img width="560" height="1200" alt="image" src="https://github.com/user-attachments/assets/b08ec0aa-4845-45e4-bff9-b8cbd386e206" />
+
 
 ### Selección de producto
 
-<!-- Reemplazar por la captura real -->
-![Selección de producto](docs/screenshots/03-seleccion-producto.png)
+
+<img width="560" height="1200" alt="image" src="https://github.com/user-attachments/assets/5bfc2e87-cdb0-4e7a-9560-c2da2606cc65" />
+
 
 ### Pantalla de pago
 
-<!-- Reemplazar por la captura real -->
-![Pantalla de pago](docs/screenshots/04-pago.png)
+
+<img width="560" height="1200" alt="image" src="https://github.com/user-attachments/assets/72a6340b-4647-4e38-b371-1da9c13e46aa" />
+<img width="560" height="1200" alt="image" src="https://github.com/user-attachments/assets/42881c09-7b4c-465c-99de-b19bef752860" />
+
+
 
 ### Cálculo de cambio o saldo pendiente
 
-<!-- Reemplazar por la captura real -->
-![Cálculo de cambio o saldo pendiente](docs/screenshots/05-resultado-pago.png)
 
-> **Cómo agregar una captura:** crea la carpeta `docs/screenshots/`, copia allí la imagen y conserva el nombre usado en el enlace Markdown correspondiente.
+<img width="560" height="1200" alt="image" src="https://github.com/user-attachments/assets/f6b25091-adb1-4f6c-bbc7-37a4fbf55aff" />
 
-## Limitaciones actuales
 
-- El catálogo está definido localmente en TypeScript; no existe una API ni una base de datos.
-- La compra se almacena únicamente en memoria y se pierde al recargar la aplicación o cerrar el proceso.
-- No existe autenticación ni gestión de usuarios.
-- No se persiste el historial de ventas.
-- Las imágenes principales se cargan desde URLs externas y usan recursos locales como respaldo.
-- El proyecto todavía utiliza el identificador de aplicación predeterminado de Capacitor.
 
-## Próximas mejoras sugeridas
 
-- Conectar el catálogo y el historial de ventas con una API.
-- Persistir las ventas con SQLite o almacenamiento seguro.
-- Añadir edición de productos y múltiples productos por ticket.
-- Incorporar impresión o generación de comprobantes.
-- Añadir pruebas de extremo a extremo para el flujo completo.
-- Configurar iconos, nombre e identificador definitivos para publicación.
+
+
+
 
